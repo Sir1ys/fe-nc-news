@@ -3,6 +3,7 @@
 $black: #10221b;
 $white: #eee;
 $light-bg: #e3e6f3;
+$green: green;
 
 @mixin flex($val) {
   display: flex;
@@ -17,3 +18,4 @@ $light-bg: #e3e6f3;
   padding: 0;
   box-sizing: border-box;
 }
+
