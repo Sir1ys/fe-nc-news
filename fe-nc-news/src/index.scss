@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,300&display=swap");
+
+$black: #10221b;
+$white: #eee;
+$light-bg: #e3e6f3;
+
+@mixin flex($val) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $val;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
