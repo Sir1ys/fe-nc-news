@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import Article from "../Article";
 
-export default function Home() {
+export default function Home({ articles }) {
   return (
-    <div>Home</div>
-  )
+    <section className="articles">
+      {articles.map((article, index) => (
+        <Article key={index} article={article} />
+      ))}
+    </section>
+  );
 }
