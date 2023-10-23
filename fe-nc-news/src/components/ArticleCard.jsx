@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Article({ article }) {
+export default function ArticleCard({ article }) {
   const {
     author,
     title,
@@ -11,7 +11,7 @@ export default function Article({ article }) {
   } = article;
 
   return (
-    <article className="article">
+    <article className="article-card">
       <img src={url} alt="Avatar" />
       <div className="container">
         <h3>

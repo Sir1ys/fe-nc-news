@@ -1,0 +1,21 @@
+@import "./index.scss";
+
+header {
+  padding: 2rem;
+  @include flex(row);
+  justify-content: space-between;
+  background-color: $blue;
+  margin-bottom: 3rem;
+
+  nav ul {
+    @include flex(row);
+    gap: 1rem;
+  }
+}
+
+.articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2rem;
+  padding: 1rem;
+}
