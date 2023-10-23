@@ -1,17 +1,17 @@
 import React from "react";
 
-export default function Article({ article }) {
+export default function ArticleCard({ article }) {
   const {
     author,
     title,
     topic,
     votes,
     article_img_url: url,
-    article_id: id,
   } = article;
 
+
   return (
-    <article className="article">
+    <article className="article-card">
       <img src={url} alt="Avatar" />
       <div className="container">
         <h3>

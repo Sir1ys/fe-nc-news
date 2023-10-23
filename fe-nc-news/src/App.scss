@@ -1,0 +1,56 @@
+@import "./index.scss";
+
+header {
+  padding: 2rem;
+  @include flex(row);
+  justify-content: space-between;
+  background-color: $blue;
+  margin-bottom: 3rem;
+
+  nav ul {
+    @include flex(row);
+    gap: 1rem;
+  }
+}
+
+.articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2rem;
+  padding: 1rem;
+}
+
+.article {
+  @include flex(column);
+  gap: 2rem;
+
+  form {
+    @include flex(column);
+    gap: 1rem;
+
+    label {
+      align-self: start;
+    }
+
+    div {
+      @include flex(row);
+      gap: 1rem;
+    }
+  }
+
+  .article-card {
+    width: 500px;
+
+    .container {
+      @include flex(column);
+      align-items: start;
+      gap: 1rem;
+    }
+  }
+}
+
+.article-card {
+  img {
+    border-radius: 1rem;
+  }
+}

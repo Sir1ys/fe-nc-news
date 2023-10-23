@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
+import ArticlePage from "./components/pages/ArticlePage";
 import Header from "./components/Header";
 import { fetchData } from "./utils";
 import "./App.scss";
@@ -20,6 +21,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home articles={articles} />} />
+          <Route path="/article" element={<ArticlePage articles={articles} />} />
         </Routes>
       </main>
       <footer></footer>
