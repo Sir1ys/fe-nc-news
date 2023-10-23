@@ -1,15 +1,17 @@
-import { ThemeContext } from "./contexts/ThemeContext";
-import { useContext } from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/pages/Home";
 import Header from "./components/Header";
 import "./App.scss";
 
 function App() {
-  const { theme } = useContext(ThemeContext);
-
   return (
     <>
       <Header />
-      <main></main>
+      <main>
+        <Routes>
+          <Route path="/articles" element={<Home />} />
+        </Routes>
+      </main>
       <footer></footer>
     </>
   );
