@@ -1,13 +1,14 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
     <header>
-      <a href="#">NC-News</a>
+      <NavLink to="/">NC News</NavLink>
       <nav>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <NavLink to="/">Home</NavLink>
           </li>
         </ul>
       </nav>

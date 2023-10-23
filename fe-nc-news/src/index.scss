@@ -26,9 +26,21 @@ li {
   list-style: none;
 }
 
+img {
+  width: 100%;
+}
+
 header {
   padding: 2rem;
   @include flex(row);
   justify-content: space-between;
   background-color: $blue;
+  margin-bottom: 3rem;
+}
+
+.articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2rem;
+  padding: 1rem;
 }
