@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import ArticleCard from "../ArticleCard";
+import CommentsList from "../CommentsList";
 
 export default function ArticlePage({ articles }) {
   const [articleId, setArticleId] = useState("");
@@ -43,7 +44,10 @@ export default function ArticlePage({ articles }) {
       {Object.keys(article).length === 0 ? (
         <h2>No article found</h2>
       ) : (
-        <ArticleCard article={article} />
+        <>
+          <ArticleCard article={article} />
+          <CommentsList articleId={article.article_id} />
+        </>
       )}
     </section>
   );
