@@ -7,8 +7,8 @@ export default function ArticleCard({ article }) {
     topic,
     votes,
     article_img_url: url,
-    article_id: id,
   } = article;
+
 
   return (
     <article className="article-card">
