@@ -8,18 +8,19 @@ export default function CommentsList({ articleId }) {
   useEffect(() => {
     const url = `https://back-end-news.onrender.com/api/articles/${articleId}/comments`;
 
-    fetchData(url).then(({comments}) => {
+    fetchData(url).then(({ comments }) => {
       setComments(comments);
     });
-
-    console.log(comments);
   }, [articleId]);
 
   return (
-    <section>
-      {comments.map((comment, index) => (
-        <CommentCard key={index} comment={comment} />
-      ))}
+    <section className="comments">
+      <h2>Testimonials</h2>
+      <div className="container">
+        {comments.map((comment, index) => (
+          <CommentCard key={index} comment={comment} />
+        ))}
+      </div>
     </section>
   );
 }

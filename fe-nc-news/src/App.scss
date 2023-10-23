@@ -47,6 +47,17 @@ header {
       gap: 1rem;
     }
   }
+
+  .comments {
+    @include flex(column);
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-gap: 2rem;
+      padding: 1rem;
+    }
+  }
 }
 
 .article-card {
