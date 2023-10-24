@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import SignIn from "../SignIn";
+import SignUp from "../SignUp";
 
 export default function LoginPage() {
   return (
-    <div>LoginPage</div>
-  )
+    <section className="login">
+      <SignIn />
+      <SignUp />
+    </section>
+  );
 }

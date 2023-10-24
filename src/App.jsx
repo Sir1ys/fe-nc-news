@@ -10,6 +10,7 @@ import "./App.scss";
 function App() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const url = "https://back-end-news.onrender.com/api/articles";
@@ -31,12 +32,9 @@ function App() {
           />
           <Route
             path="/article"
-            element={<ArticlePage articles={articles}/>}
+            element={<ArticlePage articles={articles} />}
           />
-            <Route
-            path="/login"
-            element={<LoginPage/>}
-          />
+          <Route path="/login" element={<LoginPage setUser={setUser} />} />
         </Routes>
       </main>
       <footer></footer>
