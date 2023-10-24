@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function ArticleCard({ article }) {
-  const { author, title, topic, votes, article_img_url: url } = article;
+export default function ArticleCard({ article, homePage }) {
+  const { author, title, topic, votes, article_img_url: url, body } = article;
   let navigate = useNavigate();
 
   return (
@@ -18,8 +18,11 @@ export default function ArticleCard({ article }) {
           <b>{author}</b>
         </h3>
         <h4>{title}</h4>
-        <p>{topic}</p>
-        <p>Votes: {votes}</p>
+        <p className="article-body">{body}</p>
+        <div>
+          <p>{topic}</p>
+          <p>Votes: {votes}</p>
+        </div>
       </div>
     </article>
   );

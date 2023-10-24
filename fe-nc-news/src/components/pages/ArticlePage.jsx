@@ -5,16 +5,16 @@ import { useLocation } from "react-router-dom";
 
 export default function ArticlePage() {
   const location = useLocation();
-  const { state } = location;
+  const { state: article } = location;
 
   return (
     <section className="article">
-      {Object.keys(state).length === 0 ? (
+      {Object.keys(article).length === 0 ? (
         <h2>No article found</h2>
       ) : (
         <>
-          <ArticleCard article={state} />
-          <CommentsList articleId={state.article_id} />
+          <ArticleCard article={article} />
+          <CommentsList articleId={article.article_id} />
         </>
       )}
     </section>
