@@ -18,6 +18,13 @@ $blue: #b9d9eb;
   box-sizing: border-box;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
 a {
   text-decoration: none;
 }

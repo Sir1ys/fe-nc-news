@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ user }) {
   return (
     <header>
       <NavLink to="/">NC News</NavLink>
@@ -10,9 +10,11 @@ export default function Header() {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
+          {Object.keys(user).length === 0 ? (
+            <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>
+          ) : null}
         </ul>
       </nav>
     </header>
