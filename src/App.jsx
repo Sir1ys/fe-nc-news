@@ -8,11 +8,15 @@ import "./App.scss";
 
 function App() {
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const url = "https://back-end-news.onrender.com/api/articles";
 
-    fetchData(url).then(({ articles }) => setArticles(articles));
+    fetchData(url).then(({ articles }) => {
+      setArticles(articles);
+      setLoading(false);
+    });
   }, []);
 
   return (
@@ -20,8 +24,14 @@ function App() {
       <Header />
       <main>
         <Routes>
-          <Route path="/" element={<Home articles={articles} />} />
-          <Route path="/article" element={<ArticlePage articles={articles} />} />
+          <Route
+            path="/"
+            element={<Home articles={articles} loading={loading} />}
+          />
+          <Route
+            path="/article"
+            element={<ArticlePage articles={articles}/>}
+          />
         </Routes>
       </main>
       <footer></footer>
