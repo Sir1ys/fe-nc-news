@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { patchData } from "../utils";
 
-export default function ArticleCard({ article, homePage, user }) {
-  const { author, title, votes, article_img_url: url, body } = article;
+export default function ArticleCard({ article, homePage, user, setArticles }) {
+  const {
+    author,
+    title,
+    votes,
+    article_img_url: url,
+    body,
+    article_id,
+  } = { ...article };
+
   const [vote, setVote] = useState(0);
 
   let navigate = useNavigate();
@@ -10,11 +19,44 @@ export default function ArticleCard({ article, homePage, user }) {
   const handleClick = () => {
     if (vote === 0) {
       setVote(1);
+
+      patchData(
+        `https://back-end-news.onrender.com/api/articles/${article_id}`,
+        {
+          inc_votes: "1",
+        }
+      );
+
+      setArticles((currentArticles) => {
+        const updatedArticles = [...currentArticles].map((article) => {
+          if (article.article_id === article_id) {
+            return { ...article, votes: article.votes + 1 };
+          } else return article;
+        });
+
+        return updatedArticles;
+      });
+
     } else {
       setVote(0);
-    }
 
-    
+      patchData(
+        `https://back-end-news.onrender.com/api/articles/${article_id}`,
+        {
+          inc_votes: "-1",
+        }
+      );
+
+      setArticles((currentArticles) => {
+        const updatedArticles = [...currentArticles].map((article) => {
+          if (article.article_id === article_id) {
+            return { ...article, votes: article.votes - 1 };
+          } else return article;
+        });
+
+        return updatedArticles;
+      });
+    }
   };
 
   return (
@@ -46,10 +88,10 @@ export default function ArticleCard({ article, homePage, user }) {
         </div>
       )}
       <div className="container">
-        <h3>
-          <b>{author}</b>
-        </h3>
-        <h4>{title}</h4>
+        <h3>{title}</h3>
+        <h4>
+          Written by <b>{author}</b>
+        </h4>
         <p className="article-body">{body}</p>
       </div>
     </article>

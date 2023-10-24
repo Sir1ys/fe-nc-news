@@ -4,46 +4,123 @@ header {
   padding: 2rem;
   @include flex(row);
   justify-content: space-between;
-  background-color: $blue;
+  border-bottom: 4px solid $dark-blue;
   margin-bottom: 3rem;
+
+  .logo {
+    font-size: 2rem;
+    font-weight: 500;
+    color: $dark-blue;
+  }
 
   nav ul {
     @include flex(row);
-    gap: 1rem;
+    gap: 2rem;
 
     li {
       img {
-        height: 1.75rem;
+        height: 2rem;
+      }
+
+      button {
+        padding: 0;
+        margin: 0;
+        border: none;
+        background-color: inherit;
+        font-size: inherit;
+      }
+
+      a,
+      button {
+        font-size: 1.5rem;
+        color: $blue;
+
+        &:hover {
+          color: $dark-blue;
+        }
       }
     }
   }
 }
 
 .articles {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  grid-gap: 2rem;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 
-  .article-card {
-    cursor: pointer;
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 3rem;
+    padding: 1rem;
 
-    .article-body {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+    .article-card {
+      cursor: pointer;
+      @include flex(column);
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 1rem;
+
+      &:hover {
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        h3 {
+          align-self: center;
+          text-align: center;
+          color: $black;
+        }
+
+        h4 {
+          align-self: end;
+          font-weight: normal;
+
+          b {
+            color: $dark-blue;
+          }
+        }
+      }
+
+      .article-body {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+
+  button {
+    margin: 0 auto;
+    font-size: 1.5rem;
+    font-weight: 500;
+    background-color: $white;
+    color: $blue;
+    border: none;
+    margin-bottom: 2rem;
+
+    &:hover {
+      color: $dark-blue;
+      border-bottom: 2px solid $dark-blue;
     }
   }
 }
 
 .article {
-  @include flex(column);
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
 
   .article-card {
-    width: 500px;
+    min-width: 400px;
+    padding: 2rem;
 
     .svg-heart {
       cursor: pointer;
@@ -55,45 +132,107 @@ header {
     }
 
     .container {
-      @include flex(column);
-      align-items: start;
-      gap: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      h3 {
+        color: $black;
+      }
+
+      h4 {
+        align-self: end;
+        font-weight: normal;
+
+        b {
+          color: $dark-blue;
+        }
+      }
     }
   }
 
   .comments {
     @include flex(column);
 
+    h2 {
+      font-size: 1.75rem;
+      color: $dark-blue;
+    }
+
     .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      grid-gap: 2rem;
+      grid-template-rows: 1fr;
+      grid-gap: 0.5rem;
       padding: 1rem;
+
+      h3 {
+        text-align: right;
+        color: $blue;
+      }
+    }
+
+    button {
+      margin: 0 auto;
+      font-size: 1.5rem;
+      font-weight: 500;
+      background-color: $white;
+      color: $blue;
+      border: none;
+      margin-bottom: 2rem;
+
+      &:hover {
+        color: $dark-blue;
+        border-bottom: 2px solid $dark-blue;
+      }
     }
   }
 }
 
 .login {
   .form-signIn {
-    width: 400px;
-    margin: 0 auto;
-    padding: 2rem;
     display: block;
     @include flex(column);
-    gap: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.75);
+    gap: 2.5rem;
+    padding: 2rem;
+
+    h2 {
+      text-align: center;
+      color: $dark-blue;
+      font-size: 2rem;
+    }
 
     label {
+      font-size: 1.25rem;
+      color: $blue;
       align-self: start;
     }
 
     input {
       width: 100%;
+      border: none;
+      background-color: inherit;
+      border-bottom: 3px solid $dark-blue;
+      font-size: 1rem;
     }
 
     button {
-      width: 50%;
+      width: 100%;
+      background-color: $blue;
+      padding: 1rem;
+      color: $white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: 2px solid $dark-blue;
+      border-radius: 3rem;
+
+      &:hover {
+        background-color: rgb(7, 7, 119);
+      }
+
+      &:active {
+        transform: scale(1.05);
+        border: 2px solid rgb(12, 12, 51);
+      }
     }
   }
 }
@@ -128,5 +267,17 @@ header {
 @keyframes dots {
   to {
     width: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .article {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .article {
+    grid-template-columns: 1fr;
   }
 }

@@ -5,11 +5,9 @@ export default function CommentCard({ comment }) {
   return (
     <div className="comment-card">
       <div className="container">
-        <h3>
-          <b>{author}</b>
-        </h3>
-        <p>{body}</p>
         <p>Votes: {votes}</p>
+        <h3>@{author}</h3>
+        <p>{body}</p>
       </div>
     </div>
   );

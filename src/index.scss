@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,300&display=swap");
 
-$black: #10221b;
+$black: #102215;
 $white: #eee;
 $light-bg: #e3e6f3;
-$blue: #b9d9eb;
+$blue: rgb(2, 83, 145);
+$dark-blue: rgb(2, 33, 112);
 
 @mixin flex($val) {
   display: flex;
@@ -22,7 +23,8 @@ $blue: #b9d9eb;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  background-color: $white;
+  min-height: 100vh;
 }
 
 a {
@@ -41,10 +43,14 @@ img {
 button {
   cursor: pointer;
   padding: 0.5rem 1.5rem;
-  border-radius: 0.25rem; 
+  border-radius: 0.25rem;
 }
 
 input {
   padding: 0.5rem 1.5rem;
 }
 
+main {
+  max-width: 1700px;
+  margin: 0 auto;
+}

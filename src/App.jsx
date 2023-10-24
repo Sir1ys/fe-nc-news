@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <Header user={user} />
+      <Header user={user} setUser={setUser} />
       <main>
         <Routes>
           <Route
@@ -32,7 +32,7 @@ function App() {
           />
           <Route
             path="/article"
-            element={<ArticlePage articles={articles} user={user} />}
+            element={<ArticlePage setArticles={setArticles} user={user} />}
           />
           <Route path="/login" element={<LoginPage setUser={setUser} />} />
         </Routes>

@@ -3,7 +3,7 @@ import ArticleCard from "../ArticleCard";
 import CommentsList from "../CommentsList";
 import { useLocation } from "react-router-dom";
 
-export default function ArticlePage({ user }) {
+export default function ArticlePage({ user, setArticles }) {
   const location = useLocation();
   const { state: article } = location;
 
@@ -13,7 +13,11 @@ export default function ArticlePage({ user }) {
         <h2>No article found</h2>
       ) : (
         <>
-          <ArticleCard article={article} user={user}/>
+          <ArticleCard
+            article={article}
+            user={user}
+            setArticles={setArticles}
+          />
           <CommentsList articleId={article.article_id} />
         </>
       )}
