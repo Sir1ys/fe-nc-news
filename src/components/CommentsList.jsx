@@ -5,6 +5,7 @@ import Loader from "./Loader";
 
 export default function CommentsList({ articleId }) {
   const [comments, setComments] = useState([]);
+  const [count, setCount] = useState(3);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -16,6 +17,10 @@ export default function CommentsList({ articleId }) {
     });
   }, [articleId]);
 
+  const handleClick = () => {
+    setCount(count + 2);
+  };
+
   return (
     <section className="comments">
       <h2>Testimonials</h2>
@@ -23,11 +28,22 @@ export default function CommentsList({ articleId }) {
         <Loader />
       ) : (
         <div className="container">
-          {comments.map((comment, index) => (
-            <CommentCard key={index} comment={comment} />
-          ))}
+          {comments
+            .map((comment, index) => (
+              <CommentCard key={index} comment={comment} />
+            ))
+            .slice(0, count)}
         </div>
       )}
+      {count < comments.length ? (
+        <button
+          onClick={() => {
+            handleClick();
+          }}
+        >
+          See more
+        </button>
+      ) : null}
     </section>
   );
 }
