@@ -1,0 +1,59 @@
+@import "./index.scss";
+
+header {
+  padding: 2rem;
+  @include flex(row);
+  justify-content: space-between;
+  background-color: $blue;
+  margin-bottom: 3rem;
+
+  nav ul {
+    @include flex(row);
+    gap: 1rem;
+  }
+}
+
+.articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-gap: 2rem;
+  padding: 1rem;
+
+  .article-card {
+    cursor: pointer;
+
+    .article-body {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+}
+
+.article {
+  @include flex(column);
+  gap: 2rem;
+
+  .article-card {
+    width: 500px;
+
+    .container {
+      @include flex(column);
+      align-items: start;
+      gap: 1rem;
+    }
+  }
+
+  .comments {
+    @include flex(column);
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-gap: 2rem;
+      padding: 1rem;
+    }
+  }
+}

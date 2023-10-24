@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,300&display=swap");
+
+$black: #10221b;
+$white: #eee;
+$light-bg: #e3e6f3;
+$blue: #b9d9eb;
+
+@mixin flex($val) {
+  display: flex;
+  align-items: center;
+  flex-direction: $val;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.25rem; 
+}
+
+input {
+  padding: 0.5rem 1.5rem;
+}
