@@ -14,7 +14,11 @@ export default function Header({ user }) {
             <li>
               <NavLink to="/login">Login</NavLink>
             </li>
-          ) : null}
+          ) : (
+            <li>
+              <img src={user.avatar_url} alt="image of the user" />
+            </li>
+          )}
         </ul>
       </nav>
     </header>

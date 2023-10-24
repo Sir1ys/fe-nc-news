@@ -10,6 +10,12 @@ header {
   nav ul {
     @include flex(row);
     gap: 1rem;
+
+    li {
+      img {
+        height: 1.75rem;
+      }
+    }
   }
 }
 
@@ -39,6 +45,15 @@ header {
   .article-card {
     width: 500px;
 
+    .svg-heart {
+      cursor: pointer;
+    }
+
+    .svg-heart__red {
+      cursor: pointer;
+      fill: red;
+    }
+
     .container {
       @include flex(column);
       align-items: start;
@@ -59,7 +74,6 @@ header {
 }
 
 .login {
-  
   .form-signIn {
     width: 400px;
     margin: 0 auto;

@@ -32,7 +32,7 @@ function App() {
           />
           <Route
             path="/article"
-            element={<ArticlePage articles={articles} />}
+            element={<ArticlePage articles={articles} user={user} />}
           />
           <Route path="/login" element={<LoginPage setUser={setUser} />} />
         </Routes>
