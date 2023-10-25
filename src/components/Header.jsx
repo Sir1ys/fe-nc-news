@@ -1,7 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Header({ user, setUser }) {
+export default function Header({
+  user,
+  setUser,
+  userAuthorized,
+  setUserAuthorized,
+}) {
   return (
     <header>
       <NavLink to="/" className="logo">
@@ -12,7 +17,7 @@ export default function Header({ user, setUser }) {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          {Object.keys(user).length === 0 ? (
+          {!userAuthorized ? (
             <li>
               <NavLink to="/login">Login</NavLink>
             </li>
@@ -22,6 +27,7 @@ export default function Header({ user, setUser }) {
                 <button
                   onClick={() => {
                     setUser({});
+                    setUserAuthorized(false);
                   }}
                 >
                   Log out

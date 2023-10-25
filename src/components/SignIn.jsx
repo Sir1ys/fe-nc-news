@@ -2,23 +2,22 @@ import React, { useState } from "react";
 import { fetchData } from "../utils";
 import { useNavigate } from "react-router-dom";
 
-export default function SignIn({ setUser }) {
+export default function SignIn({ setUser, setUserAuthorized }) {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetchData(`/users/${username}`).then(
-      ({ user }) => {
-        if (user === undefined) {
-        } else {
-          setUser(user);
-          setUsername("");
-          navigate("/");
-        }
+    fetchData(`/users/${username}`).then(({ user }) => {
+      if (user === undefined) {
+      } else {
+        setUser(user);
+        setUserAuthorized(true);
+        setUsername("");
+        navigate("/");
       }
-    );
+    });
   };
 
   return (

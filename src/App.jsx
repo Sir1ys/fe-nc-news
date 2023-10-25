@@ -11,6 +11,7 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
+  const [userAuthorized, setUserAuthorized] = useState(false);
 
   useEffect(() => {
     const url = "/articles";
@@ -23,7 +24,12 @@ function App() {
 
   return (
     <>
-      <Header user={user} setUser={setUser} />
+      <Header
+        user={user}
+        setUser={setUser}
+        setUserAuthorized={setUserAuthorized}
+        userAuthorized={userAuthorized}
+      />
       <main>
         <Routes>
           <Route
@@ -32,9 +38,17 @@ function App() {
           />
           <Route
             path="/articles/:article_id"
-            element={<ArticlePage setArticles={setArticles} user={user} />}
+            element={<ArticlePage setArticles={setArticles} userAuthorized={userAuthorized} />}
           />
-          <Route path="/login" element={<LoginPage setUser={setUser} />} />
+          <Route
+            path="/login"
+            element={
+              <LoginPage
+                setUser={setUser}
+                setUserAuthorized={setUserAuthorized}
+              />
+            }
+          />
         </Routes>
       </main>
       <footer></footer>

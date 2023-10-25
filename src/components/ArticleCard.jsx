@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { patchData } from "../utils";
 
-export default function ArticleCard({ article, homePage, user, setArticles }) {
+export default function ArticleCard({
+  userAuthorized,
+  article,
+  setArticles,
+  homePage,
+}) {
   const {
     author,
     title,
@@ -47,7 +52,7 @@ export default function ArticleCard({ article, homePage, user, setArticles }) {
       <img src={url} alt="Avatar" />
       {homePage ? null : (
         <div>
-          {Object.keys(user).length !== 0 ? (
+          {userAuthorized ? (
             <svg
               className={vote === 0 ? "svg-heart" : "svg-heart__red"}
               onClick={() => {
