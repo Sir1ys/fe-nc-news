@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
 import ArticlePage from "./components/pages/ArticlePage";
+import CodingPage from "./components/pages/CodingPage";
+import FootballPage from "./components/pages/FootballPage";
+import CookingPage from "./components/pages/CookingPage";
 import LoginPage from "./components/pages/LoginPage";
 import Header from "./components/Header";
 import { fetchData } from "./utils";
@@ -36,6 +39,21 @@ function App() {
             path="/"
             element={<Home articles={articles} loading={loading} />}
           />
+
+          <Route path="/articles/coding" element={<CodingPage />} />
+          <Route path="/articles/football" element={<FootballPage />} />
+          <Route path="/articles/cooking" element={<CookingPage />} />
+
+          <Route
+            path="/articles/football"
+            element={<Home articles={articles} loading={loading} />}
+          />
+
+          <Route
+            path="articles/cooking"
+            element={<Home articles={articles} loading={loading} />}
+          />
+
           <Route
             path="/articles/:article_id"
             element={
