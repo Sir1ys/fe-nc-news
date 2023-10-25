@@ -42,15 +42,15 @@ function App() {
           />
 
           <Route
-            path="/articles/coding"
+            path="/articles/topics/coding"
             element={<CodingPage articles={articles} loading={loading} />}
           />
           <Route
-            path="/articles/football"
+            path="/articles/topics/football"
             element={<FootballPage articles={articles} loading={loading} />}
           />
           <Route
-            path="/articles/cooking"
+            path="/articles/topics/cooking"
             element={<CookingPage articles={articles} loading={loading} />}
           />
 
