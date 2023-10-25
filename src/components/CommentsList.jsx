@@ -9,7 +9,7 @@ export default function CommentsList({ articleId }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const url = `https://back-end-news.onrender.com/api/articles/${articleId}/comments`;
+    const url = `/articles/${articleId}/comments`;
 
     fetchData(url).then(({ comments }) => {
       setComments(comments);

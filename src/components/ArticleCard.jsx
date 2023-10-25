@@ -16,54 +16,32 @@ export default function ArticleCard({ article, homePage, user, setArticles }) {
 
   let navigate = useNavigate();
 
-  const handleClick = () => {
-    if (vote === 0) {
-      setVote(1);
+  const handleClick = (number) => {
+    patchData(`/articles/${article_id}`, {
+      inc_votes: `${vote === 1 ? -number : number}`,
+    });
 
-      patchData(
-        `https://back-end-news.onrender.com/api/articles/${article_id}`,
-        {
-          inc_votes: "1",
-        }
-      );
-
-      setArticles((currentArticles) => {
-        const updatedArticles = [...currentArticles].map((article) => {
-          if (article.article_id === article_id) {
-            return { ...article, votes: article.votes + 1 };
-          } else return article;
-        });
-
-        return updatedArticles;
+    setArticles((currentArticles) => {
+      const updatedArticles = [...currentArticles].map((article) => {
+        if (article.article_id === article_id) {
+          return {
+            ...article,
+            votes: article.votes + (vote === 1 ? -number : number),
+          };
+        } else return article;
       });
 
-    } else {
-      setVote(0);
+      return updatedArticles;
+    });
 
-      patchData(
-        `https://back-end-news.onrender.com/api/articles/${article_id}`,
-        {
-          inc_votes: "-1",
-        }
-      );
-
-      setArticles((currentArticles) => {
-        const updatedArticles = [...currentArticles].map((article) => {
-          if (article.article_id === article_id) {
-            return { ...article, votes: article.votes - 1 };
-          } else return article;
-        });
-
-        return updatedArticles;
-      });
-    }
+    vote === 1 ? setVote(0) : setVote(1);
   };
 
   return (
     <article
       className="article-card"
       onClick={() => {
-        navigate("/article", { state: article });
+        navigate(`/articles/${article_id}`, { state: article });
       }}
     >
       <img src={url} alt="Avatar" />
@@ -73,7 +51,7 @@ export default function ArticleCard({ article, homePage, user, setArticles }) {
             <svg
               className={vote === 0 ? "svg-heart" : "svg-heart__red"}
               onClick={() => {
-                handleClick();
+                handleClick(1);
               }}
               width="24"
               height="24"
