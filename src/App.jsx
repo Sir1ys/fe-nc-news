@@ -13,7 +13,7 @@ function App() {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    const url = "https://back-end-news.onrender.com/api/articles";
+    const url = "/articles";
 
     fetchData(url).then(({ articles }) => {
       setArticles(articles);
@@ -31,7 +31,7 @@ function App() {
             element={<Home articles={articles} loading={loading} />}
           />
           <Route
-            path="/article"
+            path="/articles/:article_id"
             element={<ArticlePage setArticles={setArticles} user={user} />}
           />
           <Route path="/login" element={<LoginPage setUser={setUser} />} />

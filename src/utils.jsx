@@ -1,9 +1,11 @@
+const basicURL = 'https://back-end-news.onrender.com/api';
+
 const fetchData = (url) => {
-  return fetch(url).then((response) => response.json());
+  return fetch(basicURL + url).then((response) => response.json());
 };
 
 const patchData = (url, body) => {
-  return fetch(url, {
+  return fetch(basicURL + url, {
     method: "PATCH",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify(body),

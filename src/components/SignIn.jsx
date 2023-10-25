@@ -9,10 +9,9 @@ export default function SignIn({ setUser }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetchData(`https://back-end-news.onrender.com/api/users/${username}`).then(
+    fetchData(`/users/${username}`).then(
       ({ user }) => {
         if (user === undefined) {
-          console.log("user");
         } else {
           setUser(user);
           setUsername("");
