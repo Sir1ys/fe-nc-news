@@ -1,4 +1,4 @@
-const basicURL = 'https://back-end-news.onrender.com/api';
+const basicURL = "https://back-end-news.onrender.com/api";
 
 const fetchData = (url) => {
   return fetch(basicURL + url).then((response) => response.json());
@@ -12,4 +12,12 @@ const patchData = (url, body) => {
   });
 };
 
-export { fetchData, patchData };
+const postData = (url, body) => {
+  return fetch(basicURL + url, {
+    method: "POST",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify(body),
+  });
+};
+
+export { fetchData, patchData, postData };
