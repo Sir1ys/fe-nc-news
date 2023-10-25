@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
 import Home from "./components/pages/Home";
 import ArticlePage from "./components/pages/ArticlePage";
 import CodingPage from "./components/pages/CodingPage";
 import FootballPage from "./components/pages/FootballPage";
 import CookingPage from "./components/pages/CookingPage";
 import LoginPage from "./components/pages/LoginPage";
-import Header from "./components/Header";
+import Footer from "./components/Footer";
 import { fetchData } from "./utils";
 import "./App.scss";
 
@@ -74,7 +75,7 @@ function App() {
           />
         </Routes>
       </main>
-      <footer></footer>
+      <Footer />
     </>
   );
 }

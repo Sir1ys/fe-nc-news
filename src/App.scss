@@ -149,6 +149,7 @@ header {
     color: $blue;
     border: none;
     margin-bottom: 2rem;
+    border-bottom: 2px solid $white;
 
     &:hover {
       color: $dark-blue;
@@ -344,6 +345,31 @@ header {
         transform: scale(1.05);
         border: 2px solid rgb(12, 12, 51);
       }
+    }
+  }
+}
+
+footer {
+  border-top: 4px solid $dark-blue;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+
+  div:last-child {
+    @include flex(row);
+    text-align: center;
+    gap: 1rem;
+
+    p {
+      font-size: 1.25rem;
+    }
+
+    h5 {
+      font-size: 1.25rem;
+      color: $dark-blue;
     }
   }
 }
