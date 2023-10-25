@@ -27,8 +27,8 @@ function App() {
       <Header
         user={user}
         setUser={setUser}
-        setUserAuthorized={setUserAuthorized}
         userAuthorized={userAuthorized}
+        setUserAuthorized={setUserAuthorized}
       />
       <main>
         <Routes>
@@ -38,7 +38,13 @@ function App() {
           />
           <Route
             path="/articles/:article_id"
-            element={<ArticlePage setArticles={setArticles} userAuthorized={userAuthorized} />}
+            element={
+              <ArticlePage
+                user={user}
+                userAuthorized={userAuthorized}
+                setArticles={setArticles}
+              />
+            }
           />
           <Route
             path="/login"
