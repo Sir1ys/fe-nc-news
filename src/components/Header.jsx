@@ -22,13 +22,13 @@ export default function Header({
             <NavLink to="/">Topics</NavLink>
             <ul>
               <li>
-                <NavLink to="/">Coding</NavLink>
+                <NavLink to="/articles/coding">Coding</NavLink>
               </li>
               <li>
-                <NavLink to="/">Football</NavLink>
+                <NavLink to="/articles/football">Football</NavLink>
               </li>
               <li>
-                <NavLink to="/">Cooking</NavLink>
+                <NavLink to="/articles/cooking">Cooking</NavLink>
               </li>
             </ul>
           </li>

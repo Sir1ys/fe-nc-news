@@ -40,18 +40,17 @@ function App() {
             element={<Home articles={articles} loading={loading} />}
           />
 
-          <Route path="/articles/coding" element={<CodingPage />} />
-          <Route path="/articles/football" element={<FootballPage />} />
-          <Route path="/articles/cooking" element={<CookingPage />} />
-
+          <Route
+            path="/articles/coding"
+            element={<CodingPage articles={articles} loading={loading} />}
+          />
           <Route
             path="/articles/football"
-            element={<Home articles={articles} loading={loading} />}
+            element={<FootballPage articles={articles} loading={loading} />}
           />
-
           <Route
-            path="articles/cooking"
-            element={<Home articles={articles} loading={loading} />}
+            path="/articles/cooking"
+            element={<CookingPage articles={articles} loading={loading} />}
           />
 
           <Route
