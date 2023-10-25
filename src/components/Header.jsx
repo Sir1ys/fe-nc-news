@@ -19,7 +19,7 @@ export default function Header({
           </li>
 
           <li>
-            <NavLink to="/">Topics</NavLink>
+            <NavLink to="articles/topics/coding">Topics</NavLink>
             <ul>
               <li>
                 <NavLink to="/articles/topics/coding">Coding</NavLink>
