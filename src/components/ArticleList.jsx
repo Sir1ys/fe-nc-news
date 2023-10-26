@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Loader from "./Loader";
 import ArticleCard from "./ArticleCard";
+import Select from "./Select";
 
 export default function ArticleList({ articles, loading }) {
   const [count, setCount] = useState(6);
@@ -15,6 +16,7 @@ export default function ArticleList({ articles, loading }) {
         <Loader />
       ) : (
         <>
+          <Select />
           <div className="grid-container">
             {articles
               .map((article, index) => (
