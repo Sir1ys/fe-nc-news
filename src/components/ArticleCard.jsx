@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import { patchData } from "../utils";
 
-export default function ArticleCard({
-  userAuthorized,
-  article,
-  setArticles,
-  homePage,
-}) {
+export default function ArticleCard({ article, setArticles, homePage }) {
   const {
     author,
     title,
@@ -16,6 +12,9 @@ export default function ArticleCard({
     body,
     article_id,
   } = { ...article };
+
+  const { userAuthorizedState } = useContext(UserContext);
+  const [userAuthorized] = userAuthorizedState;
 
   const [vote, setVote] = useState(0);
 

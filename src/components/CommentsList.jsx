@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 import { fetchData, postData } from "../utils";
 import CommentCard from "./CommentCard";
 import Loader from "./Loader";
 
-export default function CommentsList({ user, articleId, userAuthorized }) {
+export default function CommentsList({ articleId }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const [count, setCount] = useState(2);
   const [loading, setLoading] = useState(true);
   const url = `/articles/${articleId}/comments`;
+
+  const { userState, userAuthorizedState } = useContext(UserContext);
+  const [user] = userState;
+  const [userAuthorized] = userAuthorizedState;
 
   useEffect(() => {
     fetchData(url).then(({ comments }) => {
@@ -26,21 +31,46 @@ export default function CommentsList({ user, articleId, userAuthorized }) {
     postData(url, {
       username: `${user.username}`,
       body: `${comment}`,
-    })
-      .then((response) => response.json())
-      .then(({ comment }) =>
-        setComments((currentComments) => {
-          const newComments = [...currentComments];
-          newComments.push(comment);
-          return newComments;
-        })
-      );
+    }).then(({ comment }) =>
+      setComments((currentComments) => {
+        const newComments = [...currentComments];
+        newComments.unshift(comment);
+        return newComments;
+      })
+    );
     setComment("");
   };
 
   return (
     <section className="comments">
       <h2>Testimonials</h2>
+      {userAuthorized ? (
+        <form
+          onSubmit={(e) => {
+            addComment(e);
+          }}
+        >
+          <label htmlFor="comment">Write comment:</label>
+          <input
+            type="text"
+            name="comment"
+            id="comment"
+            placeholder="Add a comment"
+            onChange={(e) => {
+              setComment(e.target.value);
+            }}
+            value={comment}
+          />
+          <div className="buttons">
+            <button type="reset" onClick={() => setComment("")}>
+              Cancel
+            </button>
+            <button type="submit" disabled={comment === "" ? true : false}>
+              Comment
+            </button>
+          </div>
+        </form>
+      ) : null}
       {loading ? (
         <Loader />
       ) : (
@@ -53,45 +83,16 @@ export default function CommentsList({ user, articleId, userAuthorized }) {
         </div>
       )}
 
-      <>
-        {userAuthorized ? (
-          <form
-            onSubmit={(e) => {
-              addComment(e);
-            }}
-          >
-            <label htmlFor="comment">Write comment:</label>
-            <input
-              type="text"
-              name="comment"
-              id="comment"
-              placeholder="Add a comment"
-              onChange={(e) => {
-                setComment(e.target.value);
-              }}
-              value={comment}
-            />
-            <div className="buttons">
-              <button type="reset" onClick={() => setComment("")}>
-                Cancel
-              </button>
-              <button type="submit" disabled={comment === "" ? true : false}>
-                Comment
-              </button>
-            </div>
-          </form>
-        ) : null}
-        {count < comments.length ? (
-          <button
-            className="btn"
-            onClick={() => {
-              handleClick();
-            }}
-          >
-            See more
-          </button>
-        ) : null}
-      </>
+      {count < comments.length ? (
+        <button
+          className="btn"
+          onClick={() => {
+            handleClick();
+          }}
+        >
+          See more
+        </button>
+      ) : null}
     </section>
   );
 }

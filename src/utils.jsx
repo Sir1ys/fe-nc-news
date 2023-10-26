@@ -1,23 +1,20 @@
+import axios from "axios";
+
 const basicURL = "https://back-end-news.onrender.com/api";
 
-const fetchData = (url) => {
-  return fetch(basicURL + url).then((response) => response.json());
+const fetchData = async (url) => {
+  const { data } = await axios.get(basicURL + url);
+  return data;
 };
 
-const patchData = (url, body) => {
-  return fetch(basicURL + url, {
-    method: "PATCH",
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify(body),
-  });
+const patchData = async (url, body) => {
+  const { data } = await axios.patch(basicURL + url, body);
+  return data;
 };
 
-const postData = (url, body) => {
-  return fetch(basicURL + url, {
-    method: "POST",
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify(body),
-  });
+const postData = async (url, body) => {
+  const { data } = await axios.post(basicURL + url, body);
+  return data;
 };
 
 export { fetchData, patchData, postData };

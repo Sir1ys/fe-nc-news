@@ -14,8 +14,6 @@ import "./App.scss";
 function App() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState({});
-  const [userAuthorized, setUserAuthorized] = useState(false);
 
   useEffect(() => {
     const url = "/articles";
@@ -28,12 +26,7 @@ function App() {
 
   return (
     <>
-      <Header
-        user={user}
-        setUser={setUser}
-        userAuthorized={userAuthorized}
-        setUserAuthorized={setUserAuthorized}
-      />
+      <Header />
       <main>
         <Routes>
           <Route
@@ -56,23 +49,9 @@ function App() {
 
           <Route
             path="/articles/:article_id"
-            element={
-              <ArticlePage
-                user={user}
-                userAuthorized={userAuthorized}
-                setArticles={setArticles}
-              />
-            }
+            element={<ArticlePage setArticles={setArticles} />}
           />
-          <Route
-            path="/login"
-            element={
-              <LoginPage
-                setUser={setUser}
-                setUserAuthorized={setUserAuthorized}
-              />
-            }
-          />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </main>
       <Footer />

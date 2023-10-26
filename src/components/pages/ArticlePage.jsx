@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import { useLocation } from "react-router-dom";
 import ArticleCard from "../ArticleCard";
 import CommentsList from "../CommentsList";
-import { useLocation } from "react-router-dom";
 
-export default function ArticlePage({ user, userAuthorized, setArticles }) {
+export default function ArticlePage({ setArticles }) {
   const location = useLocation();
   const { state: article } = location;
+
+  const { userAuthorizedState } = useContext(UserContext);
+  const [userAuthorized] = userAuthorizedState;
 
   return (
     <section className="article">
@@ -17,10 +21,8 @@ export default function ArticlePage({ user, userAuthorized, setArticles }) {
             article={article}
             userAuthorized={userAuthorized}
             setArticles={setArticles}
-            user={user}
           />
           <CommentsList
-            user={user}
             articleId={article.article_id}
             userAuthorized={userAuthorized}
           />

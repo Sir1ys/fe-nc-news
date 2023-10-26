@@ -1,9 +1,14 @@
-import React, { useState } from "react";
-import { fetchData } from "../utils";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
+import { fetchData } from "../utils";
 
-export default function SignIn({ setUser, setUserAuthorized }) {
+export default function SignIn() {
   const [username, setUsername] = useState("");
+  const { userState, userAuthorizedState } = useContext(UserContext);
+  const setUser = userState[1];
+  const setUserAuthorized = userAuthorizedState[1];
+
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -22,7 +27,6 @@ export default function SignIn({ setUser, setUserAuthorized }) {
 
   return (
     <form
-      className="form-signIn"
       onSubmit={(event) => {
         handleSubmit(event);
       }}
