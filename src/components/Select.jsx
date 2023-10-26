@@ -9,8 +9,8 @@ export default function Select({ setArticles }) {
 
   useEffect(() => {
     const params = new URLSearchParams();
-    params.set('sort_by', sortBy);
-    params.set('order', order);
+    params.set("sort_by", sortBy);
+    params.set("order", order);
     setSearchParams(params);
 
     const url = `/articles?sort_by=${sortBy}&order=${order}`;
@@ -32,6 +32,7 @@ export default function Select({ setArticles }) {
           }}
         >
           <option value="created_at">Date</option>
+          <option value="comment_count">Comments</option>
           <option value="votes">Votes</option>
         </select>
       </label>
