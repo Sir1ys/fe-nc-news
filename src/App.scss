@@ -228,19 +228,6 @@ header {
       color: $dark-blue;
     }
 
-    .container {
-      width: 100%;
-      display: grid;
-      grid-template-rows: 1fr;
-      grid-gap: 0.5rem;
-      padding: 1rem;
-
-      h3 {
-        text-align: right;
-        color: $blue;
-      }
-    }
-
     form {
       width: 100%;
       padding: 1rem;
@@ -305,6 +292,30 @@ header {
               color: $black;
               background-color: rgb(199, 199, 199);
             }
+          }
+        }
+      }
+    }
+
+    .container {
+      width: 100%;
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-gap: 0.5rem;
+      padding: 1rem;
+
+      .comment-card .container {
+        h3 {
+          text-align: right;
+          color: $blue;
+        }
+        div {
+          .svg-heart {
+            cursor: pointer;
+          }
+
+          .svg-heart__red {
+            fill: red;
           }
         }
       }
@@ -580,7 +591,6 @@ footer {
   }
 }
 
-
 @media only screen and (max-width: 400px) {
   .articles {
     .sort-container {
@@ -594,7 +604,7 @@ footer {
     }
   }
 
-  footer div:last-child{
+  footer div:last-child {
     flex-direction: column;
   }
 }

@@ -23,7 +23,7 @@ export default function CommentsList({ articleId }) {
   }, [articleId]);
 
   const handleClick = () => {
-    setCount(count + 2);
+    setCount(count + 1);
   };
 
   const addComment = (e) => {
@@ -77,7 +77,11 @@ export default function CommentsList({ articleId }) {
         <div className="container">
           {comments
             .map((comment, index) => (
-              <CommentCard key={index} comment={comment} />
+              <CommentCard
+                key={index}
+                comment={comment}
+                setComments={setComments}
+              />
             ))
             .slice(0, count)}
         </div>
