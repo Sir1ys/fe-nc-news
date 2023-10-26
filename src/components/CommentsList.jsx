@@ -26,15 +26,13 @@ export default function CommentsList({ user, articleId, userAuthorized }) {
     postData(url, {
       username: `${user.username}`,
       body: `${comment}`,
-    })
-      .then((response) => response.json())
-      .then(({ comment }) =>
-        setComments((currentComments) => {
-          const newComments = [...currentComments];
-          newComments.push(comment);
-          return newComments;
-        })
-      );
+    }).then(({ comment }) =>
+      setComments((currentComments) => {
+        const newComments = [...currentComments];
+        newComments.unshift(comment);
+        return newComments;
+      })
+    );
     setComment("");
   };
 
