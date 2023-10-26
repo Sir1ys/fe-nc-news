@@ -5,7 +5,7 @@ export default function CommentCard({ comment }) {
   return (
     <div className="comment-card">
       <div className="container">
-        <p>Votes: {votes}</p>
+        <p>{votes} likes</p>
         <h3>@{author}</h3>
         <p>{body}</p>
       </div>

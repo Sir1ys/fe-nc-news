@@ -41,6 +41,33 @@ export default function CommentsList({ user, articleId, userAuthorized }) {
   return (
     <section className="comments">
       <h2>Testimonials</h2>
+      {userAuthorized ? (
+        <form
+          onSubmit={(e) => {
+            addComment(e);
+          }}
+        >
+          <label htmlFor="comment">Write comment:</label>
+          <input
+            type="text"
+            name="comment"
+            id="comment"
+            placeholder="Add a comment"
+            onChange={(e) => {
+              setComment(e.target.value);
+            }}
+            value={comment}
+          />
+          <div className="buttons">
+            <button type="reset" onClick={() => setComment("")}>
+              Cancel
+            </button>
+            <button type="submit" disabled={comment === "" ? true : false}>
+              Comment
+            </button>
+          </div>
+        </form>
+      ) : null}
       {loading ? (
         <Loader />
       ) : (
@@ -53,45 +80,16 @@ export default function CommentsList({ user, articleId, userAuthorized }) {
         </div>
       )}
 
-      <>
-        {userAuthorized ? (
-          <form
-            onSubmit={(e) => {
-              addComment(e);
-            }}
-          >
-            <label htmlFor="comment">Write comment:</label>
-            <input
-              type="text"
-              name="comment"
-              id="comment"
-              placeholder="Add a comment"
-              onChange={(e) => {
-                setComment(e.target.value);
-              }}
-              value={comment}
-            />
-            <div className="buttons">
-              <button type="reset" onClick={() => setComment("")}>
-                Cancel
-              </button>
-              <button type="submit" disabled={comment === "" ? true : false}>
-                Comment
-              </button>
-            </div>
-          </form>
-        ) : null}
-        {count < comments.length ? (
-          <button
-            className="btn"
-            onClick={() => {
-              handleClick();
-            }}
-          >
-            See more
-          </button>
-        ) : null}
-      </>
+      {count < comments.length ? (
+        <button
+          className="btn"
+          onClick={() => {
+            handleClick();
+          }}
+        >
+          See more
+        </button>
+      ) : null}
     </section>
   );
 }
