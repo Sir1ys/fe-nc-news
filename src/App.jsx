@@ -1,6 +1,5 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { UserContext } from "./contexts/UserContext";
 import Header from "./components/Header";
 import Home from "./components/pages/Home";
 import ArticlePage from "./components/pages/ArticlePage";
@@ -15,7 +14,6 @@ import "./App.scss";
 function App() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [userAuthorized, setUserAuthorized] = useState(false);
 
   useEffect(() => {
     const url = "/articles";
@@ -28,10 +26,7 @@ function App() {
 
   return (
     <>
-      <Header
-        userAuthorized={userAuthorized}
-        setUserAuthorized={setUserAuthorized}
-      />
+      <Header />
       <main>
         <Routes>
           <Route
@@ -54,21 +49,9 @@ function App() {
 
           <Route
             path="/articles/:article_id"
-            element={
-              <ArticlePage
-                userAuthorized={userAuthorized}
-                setArticles={setArticles}
-              />
-            }
+            element={<ArticlePage setArticles={setArticles} />}
           />
-          <Route
-            path="/login"
-            element={
-              <LoginPage
-                setUserAuthorized={setUserAuthorized}
-              />
-            }
-          />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </main>
       <Footer />

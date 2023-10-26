@@ -3,9 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { fetchData } from "../utils";
 
-export default function SignIn({ setUserAuthorized }) {
+export default function SignIn() {
   const [username, setUsername] = useState("");
-  const { setUser } = useContext(UserContext);
+  const { userState, userAuthorizedState } = useContext(UserContext);
+  const setUser = userState[1];
+  const setUserAuthorized = userAuthorizedState[1];
+
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {

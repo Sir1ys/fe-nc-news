@@ -2,8 +2,11 @@ import React, { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { NavLink } from "react-router-dom";
 
-export default function Header({ userAuthorized, setUserAuthorized }) {
-  const { user, setUser } = useContext(UserContext);
+export default function Header() {
+  const { userState, userAuthorizedState } = useContext(UserContext);
+  const [user, setUser] = userState;
+  const [userAuthorized, setUserAuthorized] = userAuthorizedState;
+
   return (
     <header>
       <NavLink to="/" className="logo">
