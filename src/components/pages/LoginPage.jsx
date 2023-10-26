@@ -2,10 +2,10 @@ import React from "react";
 import SignIn from "../SignIn";
 import UserList from "../UserList";
 
-export default function LoginPage({ setUser, setUserAuthorized }) {
+export default function LoginPage({ setUserAuthorized }) {
   return (
     <section className="login">
-      <SignIn setUser={setUser} setUserAuthorized={setUserAuthorized} />
+      <SignIn setUserAuthorized={setUserAuthorized} />
       <UserList />
     </section>
   );

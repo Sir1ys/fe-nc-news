@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 import { fetchData, postData } from "../utils";
 import CommentCard from "./CommentCard";
 import Loader from "./Loader";
 
-export default function CommentsList({ user, articleId, userAuthorized }) {
+export default function CommentsList({ articleId, userAuthorized }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const [count, setCount] = useState(2);
   const [loading, setLoading] = useState(true);
   const url = `/articles/${articleId}/comments`;
+
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     fetchData(url).then(({ comments }) => {

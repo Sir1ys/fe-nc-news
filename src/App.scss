@@ -203,6 +203,7 @@ header {
     }
 
     .container {
+      width: 100%;
       display: grid;
       grid-template-rows: 1fr;
       grid-gap: 0.5rem;

@@ -3,7 +3,7 @@ import ArticleCard from "../ArticleCard";
 import CommentsList from "../CommentsList";
 import { useLocation } from "react-router-dom";
 
-export default function ArticlePage({ user, userAuthorized, setArticles }) {
+export default function ArticlePage({ userAuthorized, setArticles }) {
   const location = useLocation();
   const { state: article } = location;
 
@@ -17,10 +17,10 @@ export default function ArticlePage({ user, userAuthorized, setArticles }) {
             article={article}
             userAuthorized={userAuthorized}
             setArticles={setArticles}
-            user={user}
+  
           />
           <CommentsList
-            user={user}
+         
             articleId={article.article_id}
             userAuthorized={userAuthorized}
           />

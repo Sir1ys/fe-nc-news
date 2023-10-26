@@ -6,7 +6,6 @@ export default function UserList() {
   const [users, setUsers] = useState([]);
   const [count, setCount] = useState(2);
 
-  
   useEffect(() => {
     fetchData("/users").then(({ users }) => setUsers(users));
   }, []);
