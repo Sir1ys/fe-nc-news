@@ -22,7 +22,6 @@ export default function SignIn({ setUser, setUserAuthorized }) {
 
   return (
     <form
-      className="form-signIn"
       onSubmit={(event) => {
         handleSubmit(event);
       }}
