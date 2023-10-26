@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { fetchData } from "../utils";
 
-export default function Select() {
+export default function Select({ setArticles }) {
   const [sortBy, setSortBy] = useState("created_at");
   const [order, setOrder] = useState("desc");
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleSortBy = (e) => {};
+  useEffect(() => {
+    const params = new URLSearchParams();
+    params.set('sort_by', sortBy);
+    params.set('order', order);
+    setSearchParams(params);
 
-  const handleOrder = (e) => {};
+    const url = `/articles?sort_by=${sortBy}&order=${order}`;
 
-  useEffect(() => {});
+    fetchData(url).then(({ articles }) => {
+      setArticles(articles);
+    });
+  }, [order, sortBy]);
 
   return (
     <div className="sort-container">
@@ -18,11 +28,10 @@ export default function Select() {
           name="sort_by"
           id="sort_by"
           onChange={(e) => {
-            handleSortBy(e);
+            setSortBy(e.target.value);
           }}
         >
           <option value="created_at">Date</option>
-          <option value="comment_count">Comments</option>
           <option value="votes">Votes</option>
         </select>
       </label>
@@ -32,11 +41,11 @@ export default function Select() {
           name="order"
           id="order"
           onChange={(e) => {
-            handleOrder(e);
+            setOrder(e.target.value);
           }}
         >
-          <option value="asc">Hight to Low</option>
-          <option value="desc">Low to High</option>
+          <option value="desc">Hight to Low</option>
+          <option value="asc">Low to High</option>
         </select>
       </label>
     </div>
