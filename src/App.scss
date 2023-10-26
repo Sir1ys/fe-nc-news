@@ -92,6 +92,32 @@ header {
   align-items: center;
   gap: 2rem;
 
+  .sort-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 2rem;
+    padding-right: 2rem;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: $dark-blue;
+    }
+
+    select {
+      width: 150px;
+      border: none;
+      border-bottom: 2px solid $dark-blue;
+      background-color: $white;
+      padding: 0.2rem 0.5rem;
+      font-size: 1rem;
+    }
+  }
+
   .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -496,6 +522,12 @@ footer {
   }
 
   .articles {
+    .sort-container {
+      justify-content: start;
+      padding: 0;
+      padding-left: 2rem;
+    }
+
     .grid-container {
       grid-template-columns: 1fr;
     }
@@ -528,5 +560,41 @@ footer {
         font-size: 0.875rem;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .articles {
+    .sort-container {
+      justify-content: center;
+      padding: 0;
+
+      label {
+        text-align: center;
+      }
+    }
+
+    button {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 400px) {
+  .articles {
+    .sort-container {
+      flex-direction: column;
+      justify-content: center;
+      padding: 0;
+
+      label {
+        text-align: center;
+      }
+    }
+  }
+
+  footer div:last-child{
+    flex-direction: column;
   }
 }
