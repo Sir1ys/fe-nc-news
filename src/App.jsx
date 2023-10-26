@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
 import Home from "./components/pages/Home";
 import ArticlePage from "./components/pages/ArticlePage";
+import CodingPage from "./components/pages/CodingPage";
+import FootballPage from "./components/pages/FootballPage";
+import CookingPage from "./components/pages/CookingPage";
 import LoginPage from "./components/pages/LoginPage";
-import Header from "./components/Header";
+import Footer from "./components/Footer";
 import { fetchData } from "./utils";
 import "./App.scss";
 
@@ -36,6 +40,20 @@ function App() {
             path="/"
             element={<Home articles={articles} loading={loading} />}
           />
+
+          <Route
+            path="/articles/topics/coding"
+            element={<CodingPage articles={articles} loading={loading} />}
+          />
+          <Route
+            path="/articles/topics/football"
+            element={<FootballPage articles={articles} loading={loading} />}
+          />
+          <Route
+            path="/articles/topics/cooking"
+            element={<CookingPage articles={articles} loading={loading} />}
+          />
+
           <Route
             path="/articles/:article_id"
             element={
@@ -57,7 +75,7 @@ function App() {
           />
         </Routes>
       </main>
-      <footer></footer>
+      <Footer />
     </>
   );
 }

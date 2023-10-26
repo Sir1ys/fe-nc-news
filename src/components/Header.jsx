@@ -17,6 +17,22 @@ export default function Header({
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
+
+          <li>
+            <NavLink to="articles/topics/coding">Topics</NavLink>
+            <ul>
+              <li>
+                <NavLink to="/articles/topics/coding">Coding</NavLink>
+              </li>
+              <li>
+                <NavLink to="/articles/topics/football">Football</NavLink>
+              </li>
+              <li>
+                <NavLink to="/articles/topics/cooking">Cooking</NavLink>
+              </li>
+            </ul>
+          </li>
+
           {!userAuthorized ? (
             <li>
               <NavLink to="/login">Login</NavLink>
