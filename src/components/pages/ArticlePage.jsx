@@ -13,8 +13,11 @@ export default function ArticlePage({ setArticles }) {
 
   return (
     <section className="article">
-      {Object.keys(article).length === 0 ? (
-        <h2>No article found</h2>
+      {article === null ? (
+        <div className="article-not-found">
+          <h2>Error 404</h2>
+          <h3>Woops. Looks like this article doesn't exist.</h3>
+        </div>
       ) : (
         <>
           <ArticleCard

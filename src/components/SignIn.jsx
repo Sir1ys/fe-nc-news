@@ -5,6 +5,7 @@ import { fetchData } from "../api";
 
 export default function SignIn() {
   const [username, setUsername] = useState("");
+  const [err, setErr] = useState(false);
   const { userState, userAuthorizedState } = useContext(UserContext);
   const setUser = userState[1];
   const setUserAuthorized = userAuthorizedState[1];
@@ -14,15 +15,19 @@ export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetchData(`/users/${username}`).then(({ user }) => {
-      if (user === undefined) {
-      } else {
-        setUser(user);
-        setUserAuthorized(true);
-        setUsername("");
-        navigate("/");
-      }
-    });
+    fetchData(`/users/${username}`)
+      .then(({ user }) => {
+        if (user === undefined) {
+        } else {
+          setUser(user);
+          setUserAuthorized(true);
+          setUsername("");
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        setErr(true);
+      });
   };
 
   return (
@@ -38,12 +43,15 @@ export default function SignIn() {
         name="username"
         id="username"
         placeholder="Enter your username"
+        required
         onChange={(event) => {
           setUsername(event.target.value);
         }}
         value={username}
       />
+      {err ? <p>The username is invalid.</p> : null}
       <button>Sign In</button>
+
     </form>
   );
 }

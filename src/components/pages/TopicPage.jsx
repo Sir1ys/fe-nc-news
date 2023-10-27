@@ -7,10 +7,16 @@ export default function TopicPage({ articles, setArticles, loading, topic }) {
   );
 
   return (
-    <ArticleList
-      loading={loading}
-      articles={articlesList}
-      setArticles={setArticles}
-    />
+    <>
+      {articlesList.length === 0 ? (
+        <p>qwe</p>
+      ) : (
+        <ArticleList
+          loading={loading}
+          articles={articlesList}
+          setArticles={setArticles}
+        />
+      )}
+    </>
   );
 }

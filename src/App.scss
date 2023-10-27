@@ -1,6 +1,5 @@
 @import "./index.scss";
 
-
 header {
   @include flex(row);
   justify-content: space-between;
@@ -94,7 +93,7 @@ header {
     align-items: center;
     justify-content: end;
     gap: 2rem;
-    
+
     label {
       display: flex;
       flex-direction: column;
@@ -155,7 +154,7 @@ header {
           justify-content: space-between;
 
           p {
-            @include flex(row );
+            @include flex(row);
             gap: 0.25rem;
 
             svg {
@@ -186,6 +185,20 @@ header {
   display: grid;
   grid-template-columns: 2fr 1fr;
 
+  .article-not-found {
+    width: 100vw;
+    text-align: center;
+
+    h2 {
+      font-size: 8rem;
+      color: $blue;
+    }
+
+    h3 {
+      font-size: 2rem;
+    }
+  }
+
   .article-card {
     min-width: 400px;
     padding: 2rem;
@@ -195,7 +208,7 @@ header {
         fill: red;
       }
     }
-    
+
     .container {
       display: flex;
       flex-direction: column;
@@ -346,6 +359,7 @@ header {
   @include flex(column);
 
   form {
+    position: relative;
     @include flex(column);
     gap: 2.5rem;
     padding: 1rem;
@@ -385,6 +399,14 @@ header {
       &:active {
         transform: scale(1.05);
       }
+    }
+
+    p {
+      position: absolute;
+      bottom: 25%;
+      align-self: start;
+      color: rgb(255, 67, 67);
+      font-weight: 600;
     }
   }
 
@@ -443,6 +465,20 @@ footer {
       font-size: 1.25rem;
       color: $dark-blue;
     }
+  }
+}
+
+.page-not-found {
+  width: 100vw;
+  text-align: center;
+
+  h2 {
+    font-size: 8rem;
+    color: $blue;
+  }
+
+  h3 {
+    font-size: 2rem;
   }
 }
 
@@ -557,6 +593,24 @@ footer {
       }
     }
   }
+
+  .article .article-not-found {
+    h2 {
+      font-size: 5rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .page-not-found {
+    h2 {
+      font-size: 5rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -571,6 +625,24 @@ footer {
     }
 
     button {
+      font-size: 1.25rem;
+    }
+  }
+
+  .article .article-not-found {
+    h2 {
+      font-size: 4rem;
+    }
+    h3 {
+      font-size: 1.25rem;
+    }
+  }
+
+  .page-not-found {
+    h2 {
+      font-size: 4rem;
+    }
+    h3 {
       font-size: 1.25rem;
     }
   }
