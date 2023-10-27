@@ -1,88 +1,112 @@
 @import "./index.scss";
 
 header {
-  padding: 2rem;
   @include flex(row);
   justify-content: space-between;
-  border-bottom: 4px solid $dark-blue;
   margin-bottom: 3rem;
+  padding: 2rem;
+  border-bottom: 4px solid $dark-blue;
 
   .logo {
+    color: $dark-blue;
     font-size: 2rem;
     font-weight: 500;
-    color: $dark-blue;
   }
 
-  nav ul {
-    @include flex(row);
-    gap: 2rem;
-
-    &:nth-child(1) {
-      padding-right: 4rem;
+  nav {
+    #nav-close {
+      font-size: 4rem;
+      cursor: pointer;
+      color: $black;
+      display: none;
     }
 
-    li {
-      position: relative;
+    ul {
+      @include flex(row);
+      gap: 2rem;
 
-      img {
-        height: 2rem;
+      &:nth-child(1) {
+        padding-right: 4rem;
       }
 
-      button {
-        padding: 0;
-        margin: 0;
-        border: none;
-        background-color: inherit;
-        font-size: inherit;
-      }
-
-      a,
-      button {
-        font-size: 1.5rem;
-        color: $blue;
-
-        &:hover {
-          color: $dark-blue;
+      li {
+        &:first-child {
+          order: 1;
         }
-      }
 
-      ul {
-        width: 250px;
-        position: absolute;
-        left: 0;
-        z-index: 3;
-        background-color: rgb(202, 226, 246);
-        display: none;
+        &:nth-child(2) {
+          order: 2;
+        }
 
-        li {
-          width: 100%;
-          padding: 1rem;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        &:nth-child(3) {
+          order: 3;
+        }
 
-          a {
-            display: block;
-            width: 100%;
-            height: 100%;
-          }
+        &:last-child {
+          order: 4;
+        }
+
+        position: relative;
+
+        a,
+        button {
+          color: $blue;
+          font-size: 1.5rem;
 
           &:hover {
-            background-color: $blue;
+            color: $dark-blue;
+          }
+        }
+
+        button {
+          background-color: inherit;
+        }
+
+        img {
+          height: 2rem;
+        }
+
+        ul {
+          width: 250px;
+          display: none;
+          position: absolute;
+          left: 0;
+          z-index: 3;
+          background-color: rgb(209, 231, 249);
+
+          li {
+            width: 100%;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
             a {
-              color: $white;
+              display: block;
+            }
+
+            &:hover {
+              background-color: $blue;
+
+              a {
+                color: $white;
+              }
+            }
+          }
+        }
+
+        &:nth-child(2) {
+          &:hover {
+            ul {
+              display: block;
             }
           }
         }
       }
-
-      &:nth-child(2) {
-        &:hover {
-          ul {
-            display: block;
-          }
-        }
-      }
     }
+  }
+
+  #menu-btn {
+    font-size: 3rem;
+    display: none;
   }
 }
 
@@ -91,6 +115,7 @@ header {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  padding-right: 2rem;
 
   .sort-container {
     width: 100%;
@@ -98,23 +123,23 @@ header {
     align-items: center;
     justify-content: end;
     gap: 2rem;
-    padding-right: 2rem;
 
     label {
       display: flex;
       flex-direction: column;
+      gap: 0.25rem;
+      color: $dark-blue;
       font-size: 1.15rem;
       font-weight: 500;
-      color: $dark-blue;
     }
 
     select {
       width: 150px;
+      padding: 0.2rem 0.5rem;
+      background-color: $white;
+      font-size: 1rem;
       border: none;
       border-bottom: 2px solid $dark-blue;
-      background-color: $white;
-      padding: 0.2rem 0.5rem;
-      font-size: 1rem;
     }
   }
 
@@ -122,7 +147,6 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     grid-gap: 3rem;
-    padding: 1rem;
 
     .article-card {
       cursor: pointer;
@@ -142,7 +166,6 @@ header {
         gap: 0.75rem;
 
         h3 {
-          align-self: center;
           text-align: center;
           color: $black;
         }
@@ -157,15 +180,16 @@ header {
         }
 
         div {
-          width: 100%;
           display: flex;
           justify-content: space-between;
 
           p {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @include flex(row);
             gap: 0.25rem;
+
+            svg {
+              fill: $dark-blue;
+            }
           }
 
           p {
@@ -185,38 +209,34 @@ header {
       }
     }
   }
-
-  button {
-    margin: 0 auto;
-    font-size: 1.5rem;
-    font-weight: 500;
-    background-color: $white;
-    color: $blue;
-    border: none;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid $white;
-
-    &:hover {
-      color: $dark-blue;
-      border-bottom: 2px solid $dark-blue;
-    }
-  }
 }
 
 .article {
   display: grid;
-  grid-template-columns: 2.5fr 1fr;
+  grid-template-columns: 2fr 1fr;
+
+  .article-not-found {
+    width: 100vw;
+    text-align: center;
+
+    h2 {
+      font-size: 8rem;
+      color: $blue;
+    }
+
+    h3 {
+      font-size: 2rem;
+    }
+  }
 
   .article-card {
     min-width: 400px;
     padding: 2rem;
 
-    .svg-heart {
-      cursor: pointer;
-    }
-
-    .svg-heart__red {
-      fill: red;
+    div {
+      .svg-active {
+        fill: red;
+      }
     }
 
     .container {
@@ -225,6 +245,7 @@ header {
       gap: 0.75rem;
 
       h3 {
+        align-self: center;
         color: $black;
       }
 
@@ -241,6 +262,7 @@ header {
 
   .comments {
     @include flex(column);
+    gap: 2rem;
     padding: 1rem;
 
     h2 {
@@ -262,13 +284,7 @@ header {
 
       input {
         width: 100%;
-        border: none;
-        background-color: $white;
         border-bottom: 3px solid $dark-blue;
-
-        &:focus {
-          border-bottom: 3px solid $blue;
-        }
       }
 
       .buttons {
@@ -281,14 +297,15 @@ header {
           border: none;
           font-weight: 600;
           border-radius: 5rem;
+          padding: 0.5rem 1.5rem;
 
           &:nth-child(1) {
-            color: $dark-blue;
             background-color: $white;
+            color: $dark-blue;
 
             &:hover {
-              color: $black;
               background-color: rgb(199, 199, 199);
+              color: $black;
             }
 
             &:active {
@@ -297,8 +314,8 @@ header {
           }
 
           &:last-child {
-            color: $white;
             background-color: $blue;
+            color: $white;
 
             &:hover {
               background-color: $dark-blue;
@@ -338,29 +355,22 @@ header {
               flex-direction: column;
               gap: 0.5rem;
 
-              .svg-heart {
-                cursor: pointer;
-              }
-
-              .svg-heart__red {
+              .svg-active {
                 fill: red;
               }
             }
 
             .delete-btn {
               align-self: center;
-              cursor: pointer;
-              margin: 0;
               padding: 0.5rem 1.5rem;
-              border: none;
               border-radius: 5rem;
               background-color: $white;
+              color: $dark-blue;
               font-size: 1rem;
               font-weight: 600;
-              color: $dark-blue;
 
               &:hover {
-                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+                transform: scale(1.1);
               }
             }
           }
@@ -372,21 +382,6 @@ header {
         }
       }
     }
-
-    .btn {
-      margin: 0 auto;
-      font-size: 1.5rem;
-      font-weight: 500;
-      background-color: $white;
-      color: $blue;
-      border: none;
-      margin-bottom: 2rem;
-
-      &:hover {
-        color: $dark-blue;
-        border-bottom: 2px solid $dark-blue;
-      }
-    }
   }
 }
 
@@ -394,10 +389,10 @@ header {
   @include flex(column);
 
   form {
+    position: relative;
     @include flex(column);
     gap: 2.5rem;
     padding: 1rem;
-    margin-bottom: 1rem;
 
     h2 {
       text-align: center;
@@ -406,15 +401,13 @@ header {
     }
 
     label {
-      font-size: 1.25rem;
-      color: $blue;
       align-self: start;
+      color: $blue;
+      font-size: 1.25rem;
     }
 
     input {
       width: 100%;
-      border: none;
-      background-color: inherit;
       border-bottom: 3px solid $dark-blue;
       font-size: 1rem;
     }
@@ -430,13 +423,20 @@ header {
       border-radius: 3rem;
 
       &:hover {
-        background-color: rgb(7, 7, 119);
+        background-color: $dark-blue;
       }
 
       &:active {
         transform: scale(1.05);
-        border: 2px solid rgb(12, 12, 51);
       }
+    }
+
+    p {
+      position: absolute;
+      bottom: 25%;
+      align-self: start;
+      color: rgb(255, 67, 67);
+      font-weight: 600;
     }
   }
 
@@ -470,21 +470,6 @@ header {
         }
       }
     }
-
-    button {
-      padding: 0;
-      margin: 0;
-      border: none;
-      background-color: inherit;
-      font-size: inherit;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: $blue;
-
-      &:hover {
-        color: $dark-blue;
-      }
-    }
   }
 }
 
@@ -509,6 +494,62 @@ footer {
     h5 {
       font-size: 1.25rem;
       color: $dark-blue;
+    }
+  }
+}
+
+.page-not-found {
+  width: 100vw;
+  text-align: center;
+
+  h2 {
+    font-size: 8rem;
+    color: $blue;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+}
+
+.modal {
+  z-index: 1000;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal__content {
+    padding: 1.5rem;
+    max-height: 90%;
+    border-radius: 12px;
+    background-color: $white;
+    z-index: 1002;
+    width: 50%;
+    transform: scale(0.5);
+    transition: 0.5s;
+    text-align: center;
+    color: $blue;
+    font-weight: 500;
+    font-size: 1.875rem;
+    text-transform: none;
+    overflow: auto;
+
+    &.active {
+      transform: scale(1);
     }
   }
 }
@@ -550,6 +591,13 @@ footer {
   .article {
     grid-template-columns: 2fr 1fr;
   }
+
+  .modal {
+    .modal__content {
+      width: 80%;
+      font-size: 1.375rem;
+    }
+  }
 }
 
 @media only screen and (max-width: 992px) {
@@ -573,14 +621,75 @@ footer {
 @media only screen and (max-width: 767px) {
   header {
     nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
+      position: fixed;
+      top: 0;
+      left: -150%;
+      background-color: $white;
+      z-index: 1001;
+      width: 30rem;
+      height: 100%;
+      transition: 0.5s;
 
-      ul:nth-child(1) {
-        padding: 0;
+      &.active {
+        left: 0;
+        box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.8);
       }
+
+      #nav-close {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+      }
+
+      ul {
+        @include flex(column);
+        gap: 1.25rem;
+        text-align: center;
+        margin-top: 7.5rem;
+
+        a:hover {
+          text-decoration: underline;
+        }
+
+        li {
+          &:nth-child(2) {
+            .topic-link {
+              display: none;
+            }
+
+            ul {
+              margin-top: 0;
+              position: relative;
+              display: block;
+              background-color: $white;
+
+              li {
+                border: none;
+                color: $dark-blue;
+
+                &:hover {
+                  background-color: $white;
+
+                  a {
+                    color: $dark-blue;
+                  }
+                }
+              }
+            }
+          }
+          &:first-child {
+            order: 2;
+          }
+          &:last-child {
+            order: 1;
+          }
+        }
+      }
+    }
+
+    #menu-btn {
+      display: inline-block;
     }
   }
 
@@ -593,6 +702,12 @@ footer {
 
     .grid-container {
       grid-template-columns: 1fr;
+    }
+  }
+
+  .modal {
+    .modal__content {
+      font-size: 1.375rem;
     }
   }
 
@@ -624,9 +739,33 @@ footer {
       }
     }
   }
+
+  .article .article-not-found {
+    h2 {
+      font-size: 5rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .page-not-found {
+    h2 {
+      font-size: 5rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 @media only screen and (max-width: 600px) {
+  header {
+    nav {
+      width: 80%;
+    }
+  }
+
   .articles {
     .sort-container {
       justify-content: center;
@@ -638,6 +777,30 @@ footer {
     }
 
     button {
+      font-size: 1.25rem;
+    }
+  }
+
+  .article .article-not-found {
+    h2 {
+      font-size: 4rem;
+    }
+    h3 {
+      font-size: 1.25rem;
+    }
+  }
+
+  .page-not-found {
+    h2 {
+      font-size: 4rem;
+    }
+    h3 {
+      font-size: 1.25rem;
+    }
+  }
+
+  .modal {
+    .modal__content {
       font-size: 1.25rem;
     }
   }

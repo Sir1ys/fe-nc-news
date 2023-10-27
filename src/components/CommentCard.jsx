@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { patchData, deleteData } from "../api";
+import Modal from "./Modal";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function CommentCard({ comment, setComments }) {
+  const [active, setActive] = useState(false);
   const { author, body, votes, comment_id } = comment;
   const { userState, userAuthorizedState } = useContext(UserContext);
   const userAuthorized = userAuthorizedState[0];
@@ -31,8 +32,8 @@ export default function CommentCard({ comment, setComments }) {
             return updatedComments;
           });
         })
-        .catch((err) => {
-          console.log(err);
+        .then(() => {
+          setActive(true);
         });
     }
   };
@@ -43,9 +44,7 @@ export default function CommentCard({ comment, setComments }) {
         <div>
           <div>
             <FavoriteIcon
-              className={
-                commentVote === 0 ? "svg-heart" : "svg-heart svg-heart__red"
-              }
+              className={commentVote === 1 ? "svg-active" : null}
               onClick={(event) => {
                 userAuthorized ? handleVote(1) : event.target.disabled;
               }}
@@ -67,6 +66,9 @@ export default function CommentCard({ comment, setComments }) {
         <h3>@{author}</h3>
         <p>{body}</p>
       </div>
+      <Modal active={active} setActive={setActive}>
+        <h3>Your comment was deleted!</h3>
+      </Modal>
     </div>
   );
 }

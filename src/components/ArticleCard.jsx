@@ -54,7 +54,7 @@ export default function ArticleCard({ article, setArticles, homePage }) {
       {homePage ? null : (
         <div>
           <FavoriteIcon
-            className={vote === 0 ? "svg-heart" : "svg-heart svg-heart__red"}
+            className={vote === 1 ? "svg-active" : null}
             onClick={(event) => {
               userAuthorized ? handleClick(1) : event.target.disabled;
             }}

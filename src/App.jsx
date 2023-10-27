@@ -5,6 +5,7 @@ import Home from "./components/pages/Home";
 import TopicPage from "./components/pages/TopicPage";
 import ArticlePage from "./components/pages/ArticlePage";
 import LoginPage from "./components/pages/LoginPage";
+import NotFoundPage from "./components/pages/NotFoundPage";
 import Footer from "./components/Footer";
 import { fetchData } from "./api";
 import "./App.scss";
@@ -28,7 +29,18 @@ function App() {
       <main>
         <Routes>
           <Route
-            path="/"
+            path="/" 
+            element={
+              <Home
+                articles={articles}
+                setArticles={setArticles}
+                loading={loading}
+              />
+            }
+          />
+          
+           <Route
+            path="/articles" 
             element={
               <Home
                 articles={articles}
@@ -76,7 +88,10 @@ function App() {
             path="/articles/:article_id"
             element={<ArticlePage setArticles={setArticles} />}
           />
+
           <Route path="/login" element={<LoginPage />} />
+
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />

@@ -43,7 +43,7 @@ export default function CommentsList({ articleId }) {
 
   return (
     <section className="comments">
-      <h2>Testimonials</h2>
+      <h2>Reviews</h2>
       {userAuthorized ? (
         <form
           onSubmit={(e) => {
@@ -89,7 +89,7 @@ export default function CommentsList({ articleId }) {
 
       {count < comments.length ? (
         <button
-          className="btn"
+          className="button-blue"
           onClick={() => {
             handleClick();
           }}

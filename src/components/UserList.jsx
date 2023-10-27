@@ -21,6 +21,7 @@ export default function UserList() {
           .slice(count - 2, count)}
       </div>
       <button
+        className="button-blue"
         onClick={() => {
           if (count >= users.length) {
             setCount(2);

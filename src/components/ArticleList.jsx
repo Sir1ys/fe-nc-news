@@ -26,6 +26,7 @@ export default function ArticleList({ articles, setArticles, loading }) {
           </div>
           {count < articles.length ? (
             <button
+              className="button-blue"
               onClick={() => {
                 handleClick();
               }}

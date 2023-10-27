@@ -4,7 +4,7 @@ $black: #102215;
 $white: #eee;
 $light-bg: #e3e6f3;
 $blue: rgb(2, 83, 145);
-$dark-blue: rgb(2, 33, 112);
+$dark-blue: rgb(1, 33, 113);
 
 @mixin flex($val) {
   display: flex;
@@ -40,14 +40,35 @@ img {
   border-radius: 1rem;
 }
 
+section {
+  margin-bottom: 2rem;
+}
+
 button {
   cursor: pointer;
-  padding: 0.5rem 1.5rem;
+  padding: 0;
+  margin: 0;
   border-radius: 0.25rem;
+  border: none;
+}
+
+.button-blue {
+  margin: 0 auto;
+  background-color: $white;
+  color: $blue;
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  &:hover {
+    color: $dark-blue;
+    transform: scale(1.1);
+  }
 }
 
 input {
   padding: 0.5rem 1.5rem;
+  border: none;
+  background-color: $white;
 
   &:focus {
     outline-style: none;
@@ -58,4 +79,8 @@ input {
 main {
   max-width: 1700px;
   margin: 0 auto;
+}
+
+svg {
+  cursor: pointer;
 }
