@@ -11,6 +11,7 @@ export default function ArticleCard({ article, setArticles, homePage }) {
     article_img_url: url,
     body,
     article_id,
+    created_at,
   } = { ...article };
 
   const { userAuthorizedState } = useContext(UserContext);
@@ -73,6 +74,12 @@ export default function ArticleCard({ article, setArticles, homePage }) {
           Written by <b>{author}</b>
         </h4>
         <p className="article-body">{body}</p>
+        {homePage ? (
+          <div>
+            <p>{votes} likes</p>
+            <p>{created_at.split("T")[0]}</p>
+          </div>
+        ) : null}
       </div>
     </article>
   );
