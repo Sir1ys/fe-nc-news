@@ -3,13 +3,11 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/pages/Home";
 import ArticlePage from "./components/pages/ArticlePage";
-import CodingPage from "./components/pages/CodingPage";
-import FootballPage from "./components/pages/FootballPage";
-import CookingPage from "./components/pages/CookingPage";
 import LoginPage from "./components/pages/LoginPage";
 import Footer from "./components/Footer";
 import { fetchData } from "./utils";
 import "./App.scss";
+import TopicPage from "./components/pages/TopicPage";
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -31,20 +29,47 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home articles={articles} setArticles={setArticles} loading={loading} />}
+            element={
+              <Home
+                articles={articles}
+                setArticles={setArticles}
+                loading={loading}
+              />
+            }
           />
 
           <Route
             path="/articles/topics/coding"
-            element={<CodingPage articles={articles} setArticles={setArticles} loading={loading} />}
+            element={
+              <TopicPage
+                articles={articles}
+                setArticles={setArticles}
+                loading={loading}
+                topic="coding"
+              />
+            }
           />
           <Route
             path="/articles/topics/football"
-            element={<FootballPage articles={articles} setArticles={setArticles} loading={loading} />}
+            element={
+              <TopicPage
+                articles={articles}
+                setArticles={setArticles}
+                loading={loading}
+                topic="football"
+              />
+            }
           />
           <Route
             path="/articles/topics/cooking"
-            element={<CookingPage articles={articles} setArticles={setArticles} loading={loading} />}
+            element={
+              <TopicPage
+                articles={articles}
+                setArticles={setArticles}
+                loading={loading}
+                topic="cooking"
+              />
+            }
           />
 
           <Route
