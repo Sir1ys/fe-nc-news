@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/pages/Home";
+import TopicPage from "./components/pages/TopicPage";
 import ArticlePage from "./components/pages/ArticlePage";
 import LoginPage from "./components/pages/LoginPage";
 import Footer from "./components/Footer";
 import { fetchData } from "./utils";
 import "./App.scss";
-import TopicPage from "./components/pages/TopicPage";
 
 function App() {
   const [articles, setArticles] = useState([]);
