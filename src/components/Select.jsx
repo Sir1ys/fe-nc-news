@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { fetchData } from "../utils";
+import { fetchData } from "../api";
 
 export default function Select({ setArticles }) {
   const [sortBy, setSortBy] = useState("created_at");
   const [order, setOrder] = useState("desc");
-  const [searchParams, setSearchParams] = useSearchParams();
+  const setSearchParams = useSearchParams()[1];
 
   useEffect(() => {
     const params = new URLSearchParams();

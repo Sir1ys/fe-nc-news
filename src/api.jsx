@@ -17,4 +17,8 @@ const postData = async (url, body) => {
   return data;
 };
 
-export { fetchData, patchData, postData };
+const deleteData = async (url) => {
+  await axios.delete(basicURL + url);
+};
+
+export { fetchData, patchData, postData, deleteData };

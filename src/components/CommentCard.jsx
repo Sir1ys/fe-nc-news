@@ -1,21 +1,40 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
-import { patchData } from "../utils";
+import { patchData, deleteData } from "../api";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function CommentCard({ comment }) {
+export default function CommentCard({ comment, setComments }) {
   const { author, body, votes, comment_id } = comment;
-  const { userAuthorizedState } = useContext(UserContext);
-  const [userAuthorized] = userAuthorizedState;
-
+  const { userState, userAuthorizedState } = useContext(UserContext);
+  const userAuthorized = userAuthorizedState[0];
+  const { username } = userState[0];
   const [commentVote, setCommentVote] = useState(0);
 
-  const handleClick = (number) => {
+  const handleVote = (number) => {
     patchData(`/comments/${comment_id}`, {
       inc_votes: `${commentVote === 1 ? -number : number}`,
     });
 
     commentVote === 1 ? setCommentVote(0) : setCommentVote(1);
+  };
+
+  const handleDelete = () => {
+    if (username === author) {
+      deleteData(`/comments/${comment_id}`)
+        .then(() => {
+          setComments((currentComments) => {
+            const updatedComments = [...currentComments].filter(
+              (comment) => comment.comment_id !== comment_id
+            );
+
+            return updatedComments;
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (
@@ -27,9 +46,16 @@ export default function CommentCard({ comment }) {
               commentVote === 0 ? "svg-heart" : "svg-heart svg-heart__red"
             }
             onClick={(event) => {
-              userAuthorized ? handleClick(1) : event.target.disabled;
+              userAuthorized ? handleVote(1) : event.target.disabled;
             }}
           />
+          {username === author ? (
+            <DeleteIcon
+              onClick={() => {
+                handleDelete();
+              }}
+            />
+          ) : null}
           <p>{votes + commentVote} likes</p>
         </div>
         <h3>@{author}</h3>

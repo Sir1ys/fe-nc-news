@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
-import { fetchData } from "../utils";
+import { fetchData } from "../api";
 
 export default function SignIn() {
   const [username, setUsername] = useState("");

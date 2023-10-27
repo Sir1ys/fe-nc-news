@@ -6,7 +6,7 @@ import TopicPage from "./components/pages/TopicPage";
 import ArticlePage from "./components/pages/ArticlePage";
 import LoginPage from "./components/pages/LoginPage";
 import Footer from "./components/Footer";
-import { fetchData } from "./utils";
+import { fetchData } from "./api";
 import "./App.scss";
 
 function App() {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-import { fetchData, postData } from "../utils";
+import { fetchData, postData } from "../api";
 import CommentCard from "./CommentCard";
 import Loader from "./Loader";
 
