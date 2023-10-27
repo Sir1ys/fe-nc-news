@@ -74,7 +74,7 @@ export default function CommentsList({ articleId }) {
       {loading ? (
         <Loader />
       ) : (
-        <div className="container">
+        <div className="comments-container">
           {comments
             .map((comment, index) => (
               <CommentCard

@@ -41,22 +41,28 @@ export default function CommentCard({ comment, setComments }) {
     <div className="comment-card">
       <div className="container">
         <div>
-          <FavoriteIcon
-            className={
-              commentVote === 0 ? "svg-heart" : "svg-heart svg-heart__red"
-            }
-            onClick={(event) => {
-              userAuthorized ? handleVote(1) : event.target.disabled;
-            }}
-          />
+          <div>
+            <FavoriteIcon
+              className={
+                commentVote === 0 ? "svg-heart" : "svg-heart svg-heart__red"
+              }
+              onClick={(event) => {
+                userAuthorized ? handleVote(1) : event.target.disabled;
+              }}
+            />
+            <p>{votes + commentVote} likes</p>
+          </div>
+
           {username === author ? (
-            <DeleteIcon
+            <button
+              className="delete-btn"
               onClick={() => {
                 handleDelete();
               }}
-            />
+            >
+              Delete
+            </button>
           ) : null}
-          <p>{votes + commentVote} likes</p>
         </div>
         <h3>@{author}</h3>
         <p>{body}</p>
