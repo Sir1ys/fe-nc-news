@@ -45,7 +45,7 @@ export default function Select({ setArticles }) {
             setOrder(e.target.value);
           }}
         >
-          <option value="desc">Hight to Low</option>
+          <option value="desc">High to Low</option>
           <option value="asc">Low to High</option>
         </select>
       </label>
