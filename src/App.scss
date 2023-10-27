@@ -482,6 +482,48 @@ footer {
   }
 }
 
+.modal {
+  z-index: 1000;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal__content {
+    padding: 1.5rem;
+    max-height: 90%;
+    border-radius: 12px;
+    background-color: $white;
+    z-index: 1002;
+    width: 50%;
+    transform: scale(0.5);
+    transition: 0.5s;
+    text-align: center;
+    color: $blue;
+    font-weight: 500;
+    font-size: 1.875rem;
+    text-transform: none;
+    overflow: auto;
+
+    &.active {
+      transform: scale(1);
+    }
+  }
+}
+
 //loader settings
 .loader {
   position: fixed;
@@ -518,6 +560,13 @@ footer {
 @media only screen and (max-width: 1200px) {
   .article {
     grid-template-columns: 2fr 1fr;
+  }
+
+  .modal {
+    .modal__content {
+      width: 80%;
+      font-size: 1.375rem;
+    }
   }
 }
 
@@ -562,6 +611,12 @@ footer {
 
     .grid-container {
       grid-template-columns: 1fr;
+    }
+  }
+
+  .modal {
+    .modal__content {
+      font-size: 1.375rem;
     }
   }
 
@@ -643,6 +698,12 @@ footer {
       font-size: 4rem;
     }
     h3 {
+      font-size: 1.25rem;
+    }
+  }
+
+  .modal {
+    .modal__content {
       font-size: 1.25rem;
     }
   }
