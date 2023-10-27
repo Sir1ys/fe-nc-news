@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-import { fetchData, postData } from "../utils";
+import { fetchData, postData } from "../api";
 import CommentCard from "./CommentCard";
 import Loader from "./Loader";
 
@@ -74,7 +74,7 @@ export default function CommentsList({ articleId }) {
       {loading ? (
         <Loader />
       ) : (
-        <div className="container">
+        <div className="comments-container">
           {comments
             .map((comment, index) => (
               <CommentCard

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
-import { patchData } from "../utils";
+import { patchData } from "../api";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export default function ArticleCard({ article, setArticles, homePage }) {
@@ -70,7 +70,9 @@ export default function ArticleCard({ article, setArticles, homePage }) {
         <p className="article-body">{body}</p>
         {homePage ? (
           <div>
-            <p>{votes} <FavoriteIcon /></p>
+            <p>
+              {votes} <FavoriteIcon />
+            </p>
             <p>{created_at.split("T")[0]}</p>
           </div>
         ) : null}
