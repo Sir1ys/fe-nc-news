@@ -43,9 +43,7 @@ export default function CommentCard({ comment, setComments }) {
         <div>
           <div>
             <FavoriteIcon
-              className={
-                commentVote === 0 ? "svg-heart" : "svg-heart svg-heart__red"
-              }
+              className={commentVote === 1 ? "svg-active" : null}
               onClick={(event) => {
                 userAuthorized ? handleVote(1) : event.target.disabled;
               }}

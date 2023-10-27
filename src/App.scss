@@ -1,16 +1,17 @@
 @import "./index.scss";
 
+
 header {
-  padding: 2rem;
   @include flex(row);
   justify-content: space-between;
-  border-bottom: 4px solid $dark-blue;
   margin-bottom: 3rem;
+  padding: 2rem;
+  border-bottom: 4px solid $dark-blue;
 
   .logo {
+    color: $dark-blue;
     font-size: 2rem;
     font-weight: 500;
-    color: $dark-blue;
   }
 
   nav ul {
@@ -24,35 +25,31 @@ header {
     li {
       position: relative;
 
-      img {
-        height: 2rem;
-      }
-
-      button {
-        padding: 0;
-        margin: 0;
-        border: none;
-        background-color: inherit;
-        font-size: inherit;
-      }
-
       a,
       button {
-        font-size: 1.5rem;
         color: $blue;
+        font-size: 1.5rem;
 
         &:hover {
           color: $dark-blue;
         }
       }
 
+      button {
+        background-color: inherit;
+      }
+
+      img {
+        height: 2rem;
+      }
+
       ul {
         width: 250px;
+        display: none;
         position: absolute;
         left: 0;
         z-index: 3;
-        background-color: rgb(202, 226, 246);
-        display: none;
+        background-color: rgb(209, 231, 249);
 
         li {
           width: 100%;
@@ -61,8 +58,6 @@ header {
 
           a {
             display: block;
-            width: 100%;
-            height: 100%;
           }
 
           &:hover {
@@ -91,6 +86,7 @@ header {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  padding-right: 2rem;
 
   .sort-container {
     width: 100%;
@@ -98,23 +94,23 @@ header {
     align-items: center;
     justify-content: end;
     gap: 2rem;
-    padding-right: 2rem;
-
+    
     label {
       display: flex;
       flex-direction: column;
+      gap: 0.25rem;
+      color: $dark-blue;
       font-size: 1.15rem;
       font-weight: 500;
-      color: $dark-blue;
     }
 
     select {
       width: 150px;
+      padding: 0.2rem 0.5rem;
+      background-color: $white;
+      font-size: 1rem;
       border: none;
       border-bottom: 2px solid $dark-blue;
-      background-color: $white;
-      padding: 0.2rem 0.5rem;
-      font-size: 1rem;
     }
   }
 
@@ -122,7 +118,6 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     grid-gap: 3rem;
-    padding: 1rem;
 
     .article-card {
       cursor: pointer;
@@ -142,7 +137,6 @@ header {
         gap: 0.75rem;
 
         h3 {
-          align-self: center;
           text-align: center;
           color: $black;
         }
@@ -157,15 +151,16 @@ header {
         }
 
         div {
-          width: 100%;
           display: flex;
           justify-content: space-between;
 
           p {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @include flex(row );
             gap: 0.25rem;
+
+            svg {
+              fill: $dark-blue;
+            }
           }
 
           p {
@@ -185,46 +180,29 @@ header {
       }
     }
   }
-
-  button {
-    margin: 0 auto;
-    font-size: 1.5rem;
-    font-weight: 500;
-    background-color: $white;
-    color: $blue;
-    border: none;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid $white;
-
-    &:hover {
-      color: $dark-blue;
-      border-bottom: 2px solid $dark-blue;
-    }
-  }
 }
 
 .article {
   display: grid;
-  grid-template-columns: 2.5fr 1fr;
+  grid-template-columns: 2fr 1fr;
 
   .article-card {
     min-width: 400px;
     padding: 2rem;
 
-    .svg-heart {
-      cursor: pointer;
+    div {
+      .svg-active {
+        fill: red;
+      }
     }
-
-    .svg-heart__red {
-      fill: red;
-    }
-
+    
     .container {
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
 
       h3 {
+        align-self: center;
         color: $black;
       }
 
@@ -241,6 +219,7 @@ header {
 
   .comments {
     @include flex(column);
+    gap: 2rem;
     padding: 1rem;
 
     h2 {
@@ -262,13 +241,7 @@ header {
 
       input {
         width: 100%;
-        border: none;
-        background-color: $white;
         border-bottom: 3px solid $dark-blue;
-
-        &:focus {
-          border-bottom: 3px solid $blue;
-        }
       }
 
       .buttons {
@@ -281,14 +254,15 @@ header {
           border: none;
           font-weight: 600;
           border-radius: 5rem;
+          padding: 0.5rem 1.5rem;
 
           &:nth-child(1) {
-            color: $dark-blue;
             background-color: $white;
+            color: $dark-blue;
 
             &:hover {
-              color: $black;
               background-color: rgb(199, 199, 199);
+              color: $black;
             }
 
             &:active {
@@ -297,8 +271,8 @@ header {
           }
 
           &:last-child {
-            color: $white;
             background-color: $blue;
+            color: $white;
 
             &:hover {
               background-color: $dark-blue;
@@ -338,29 +312,22 @@ header {
               flex-direction: column;
               gap: 0.5rem;
 
-              .svg-heart {
-                cursor: pointer;
-              }
-
-              .svg-heart__red {
+              .svg-active {
                 fill: red;
               }
             }
 
             .delete-btn {
               align-self: center;
-              cursor: pointer;
-              margin: 0;
               padding: 0.5rem 1.5rem;
-              border: none;
               border-radius: 5rem;
               background-color: $white;
+              color: $dark-blue;
               font-size: 1rem;
               font-weight: 600;
-              color: $dark-blue;
 
               &:hover {
-                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+                transform: scale(1.1);
               }
             }
           }
@@ -370,21 +337,6 @@ header {
             color: $blue;
           }
         }
-      }
-    }
-
-    .btn {
-      margin: 0 auto;
-      font-size: 1.5rem;
-      font-weight: 500;
-      background-color: $white;
-      color: $blue;
-      border: none;
-      margin-bottom: 2rem;
-
-      &:hover {
-        color: $dark-blue;
-        border-bottom: 2px solid $dark-blue;
       }
     }
   }
@@ -397,7 +349,6 @@ header {
     @include flex(column);
     gap: 2.5rem;
     padding: 1rem;
-    margin-bottom: 1rem;
 
     h2 {
       text-align: center;
@@ -406,15 +357,13 @@ header {
     }
 
     label {
-      font-size: 1.25rem;
-      color: $blue;
       align-self: start;
+      color: $blue;
+      font-size: 1.25rem;
     }
 
     input {
       width: 100%;
-      border: none;
-      background-color: inherit;
       border-bottom: 3px solid $dark-blue;
       font-size: 1rem;
     }
@@ -430,12 +379,11 @@ header {
       border-radius: 3rem;
 
       &:hover {
-        background-color: rgb(7, 7, 119);
+        background-color: $dark-blue;
       }
 
       &:active {
         transform: scale(1.05);
-        border: 2px solid rgb(12, 12, 51);
       }
     }
   }
@@ -468,21 +416,6 @@ header {
         &:nth-child(2) {
           justify-content: end;
         }
-      }
-    }
-
-    button {
-      padding: 0;
-      margin: 0;
-      border: none;
-      background-color: inherit;
-      font-size: inherit;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: $blue;
-
-      &:hover {
-        color: $dark-blue;
       }
     }
   }
