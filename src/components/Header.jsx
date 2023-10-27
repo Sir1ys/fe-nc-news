@@ -1,25 +1,36 @@
 import React, { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { NavLink } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
 export default function Header() {
   const { userState, userAuthorizedState } = useContext(UserContext);
   const [user, setUser] = userState;
   const [userAuthorized, setUserAuthorized] = userAuthorizedState;
 
+  const toggleClassName = (action) => {
+    if (action === "add") {
+      document.getElementById("nav").classList.add("active");
+    } else {
+      document.getElementById("nav").classList.remove("active");
+    }
+  };
+
   return (
     <header>
       <NavLink to="/" className="logo">
         NC News
       </NavLink>
-      <nav>
+      <nav id="nav">
+        <CloseIcon id="nav-close" onClick={() => toggleClassName("remove")} />
         <ul>
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
 
           <li>
-            <NavLink to="articles/topics/coding">Topics</NavLink>
+            <NavLink to="articles/topics/coding" className='topic-link'>Topics</NavLink>
             <ul>
               <li>
                 <NavLink to="/articles/topics/coding">Coding</NavLink>
@@ -56,6 +67,7 @@ export default function Header() {
           )}
         </ul>
       </nav>
+      <MenuIcon id="menu-btn" onClick={() => toggleClassName("add")} />
     </header>
   );
 }
