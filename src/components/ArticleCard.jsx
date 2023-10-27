@@ -70,7 +70,7 @@ export default function ArticleCard({ article, setArticles, homePage }) {
         <p className="article-body">{body}</p>
         {homePage ? (
           <div>
-            <p>{votes} likes</p>
+            <p>{votes} <FavoriteIcon /></p>
             <p>{created_at.split("T")[0]}</p>
           </div>
         ) : null}

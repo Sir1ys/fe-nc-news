@@ -162,8 +162,15 @@ header {
           justify-content: space-between;
 
           p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.25rem;
+          }
+
+          p {
             &:last-child {
-               color: $dark-blue;
+              color: $dark-blue;
             }
           }
         }
