@@ -115,7 +115,7 @@ header {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding-right: 2rem;
+  padding: 1rem;
 
   .sort-container {
     width: 100%;
@@ -694,6 +694,9 @@ footer {
   }
 
   .articles {
+    padding-right: 0;
+    padding: 1rem;
+
     .sort-container {
       justify-content: start;
       padding: 0;
@@ -767,6 +770,7 @@ footer {
   }
 
   .articles {
+    
     .sort-container {
       justify-content: center;
       padding: 0;
@@ -775,7 +779,7 @@ footer {
         text-align: center;
       }
     }
-
+  
     button {
       font-size: 1.25rem;
     }
